@@ -1,0 +1,30 @@
+vscode c_cpp_properties.json:
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/arrel/zephyr-sdk-0.16.8/riscv64-zephyr-elf/bin/riscv64-zephyr-elf-gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+
+
+
+When using an out-of-tree board, need to set the BOARD_ROOT env var:
+
+export BOARD_ROOT=/home/arrel/gits/my_zephyr-projects
+
+Then, from within west venv at zephyr root dir:
+west build -b <the_board_folder_name> /home/arrel/gits/my_zephyr-projects/eeprom_24LC512 -p auto
+
+i.e:
+(.venv) arrel@Suborbital-003:~/zp/zephyr$ west build -b my_esp32c3_supermini /home/arrel/gits/my_zephyr-projects/eeprom_24LC512 -p auto
+
